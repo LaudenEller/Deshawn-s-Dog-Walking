@@ -1,0 +1,24 @@
+/* add css to article class */
+.details {
+    /* add flexbox display */
+    display: flex;
+    /* space content in box evenly */
+    justify-content: space-evenly;
+}
+
+/* add css to section class for three detail columns */
+.detail--column {
+    /* determines relative column widths to each other (or maybe rather it's the display window) */
+    flex-basis: 24%;
+    /* determines margin around content */
+    margin: 0 2rem;
+    /* creates border aroud content */
+    border: 1px dotted goldenrod;
+}
+
+/* add css to article class */
+.assignments {
+    /* add space around article box */
+    padding: 1rem 5rem;
+}
+
