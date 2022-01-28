@@ -78,23 +78,28 @@ const cityList = getCities()
 const walkerCitiesNameFunction = (assignments) => {
     // Declare an empty string
     let cityNameString = ""
+
+    // keep track of how many city names you have added to string
+    let citiesAdded = 0
     // iterate through the city array
     for (const assignment of assignments) {
         // add conditional to check if assignments array length is > 1
         if (assignments.length > 1) {
             // for each assignment, iterate through the imported list of cities
             for (const city of cityList) {
-                // keep track of how many city names you have added to string
-                if (cityNameString.length === assignments.length - 1 && city.id === assignment.cityId) {
+                // check if the current city integer is the last city that is needed
+                if (citiesAdded === assignments.length - 1 && city.id === assignment.cityId) {
                     // Push city name and previous cities to string
                     cityNameString = `${cityNameString} and ${city.name}`
-            }
-            else if (city.id === assignment.cityId) {
-                // Push Cities.name to string
-                cityNameString += `${city.name}`
+                }
+                else if (city.id === assignment.cityId) {
+                    // Push Cities.name to string
+                    cityNameString += `${city.name}`
+                    // keep track of how many city names you have added to string
+                    citiesAdded = citiesAdded + 1
+                }
             }
         }
-    }
         // Check if the primary key of the Cities equals the foreign key on the walkerCities
         else {
             // for each assignment, iterate through the imported list of cities
@@ -102,6 +107,8 @@ const walkerCitiesNameFunction = (assignments) => {
                 if (city.id === assignment.cityId) {
                     // Push Cities.name to string
                     cityNameString = `${city.name}`
+                    // keep track of how many city names you have added to string
+                    citiesAdded = citiesAdded + 1
                 }
             }
         }
